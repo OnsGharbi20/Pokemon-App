@@ -1,0 +1,92 @@
+<div class="container" *ngIf="pokemon">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+            <div class="card border-0 shadow">
+                <img src={{pokemon.sprites.front_default}} alt="...">
+                <div class="card-body p-1-9 p-xl-5">
+                    <div class="mb-4">
+                        <h3 class="h4 mb-0 name">{{pokemon.name}}</h3>
+                    </div>
+                    <ul class="list-unstyled mb-4">
+                        <li class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="charcteristics">Base expirience : </span>
+                                </div>
+                                <div class="col">
+                                    <p>{{pokemon.base_experience}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="charcteristics">Height : </span>
+                                </div>
+                                <div class="col">
+                                    <p>{{pokemon.height}}</p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="charcteristics">Weight : </span>
+                                </div>
+                                <div class="col">
+                                    <p>{{pokemon.weight}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="ps-lg-1-6 ps-xl-5">
+                <div class="mb-5 wow fadeIn">
+                    <div class="text-start mb-1-6 wow fadeIn">
+                        <h2 class="h1 mb-0 name">Moves</h2>
+                    </div>
+                    <div class="card mt-3">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngFor="let move of pokemon.moves | slice:0:10 ">
+                            <p>{{move.move.name}}</p>
+                          </li>
+                        </ul>
+                    </div>
+                    <div class="text-start mb-1-6 wow fadeIn">
+                        <h2 class="h1 mb-0 name">Abilities</h2>
+                    </div>
+                    <div class="card mt-3">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap" *ngFor="let ability of pokemon.abilities | slice:0:10">
+                            <p>{{ability.ability.name}}</p>
+                          </li>
+                        </ul>
+                    </div>
+                    <button class="bn632-hover bn19" (click)="open(Species,pokemon.species.url)">Species</button>
+                </div>
+            </div>
+        </div>
+       
+    </div>    
+</div>
+<ng-template #Species let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">{{pokemon?.name}} species</h4>
+    </div>
+    <div class="modal-body">
+        <div class="container">
+            <div class="row justify-content-center" *ngIf="species">
+                <p><span class="charcteristics">Base happiness : </span></p><p>{{species.base_happiness}}</p>
+                <p><span class="charcteristics">Capture rate : </span></p><p>{{species.capture_rate}}</p>
+                <p><span class="charcteristics">Color : </span></p><p>{{species.color.name}}</p>
+                <p><span class="charcteristics">Generation : </span></p><p>{{species.generation.name}}</p>
+                <p><span class="charcteristics">Growth rate : </span></p><p>{{species.growth_rate.name}}</p>
+                <p><span class="charcteristics">Order : </span></p><p>{{species.order}}</p>
+                <p><span class="charcteristics">Hatch counter : </span></p><p>{{species.hatch_counter}}</p>
+            </div>
+        </div>
+    </div>
+  </ng-template>
